@@ -1,0 +1,57 @@
+<div class="main-content">
+    <div class="section-content section-content-p30">
+        <div class="container-fluid">
+            <div class="row">
+            <!-- loop over collection of product-->
+              
+                
+            <div *ngFor="let tempProduct of products" class="col-md-3">    
+                <div class="product-box">
+                    
+                    <a routerLink="/products/{{tempProduct.id}}">
+                        <img src="/{{tempProduct.imageUrl}}">   
+                    </a>
+                    
+                    <a routerLink="/products/{{tempProduct.id}}">
+                        <h1>{{tempProduct.name}}</h1>
+                    </a>    
+                    <div class="price">{{ tempProduct.unitPrice | currency:'USD'}}</div>
+                    <button (click)="addToCart(tempProduct)" class="btn btn-primary btn-sm">Add to cart</button>
+                </div>
+            </div> 
+            
+            <!--if products are empty then display the message-->
+             <!-- ? is a safe navigation operator and guards agaist any null undefined values in property path-->
+            <div *ngIf="products?.length == 0" class="alert alert-warning col-md-12" role="alert">
+                   Sorry No Products Found ....... :(
+            </div>
+        </div>
+
+        <!-- Begin footer -->
+        <div class="footer-pagination">
+            <div class="row">
+                <div class="col-md-6">
+
+                    <div class="col-md-6">
+                        <div class="row">
+                            <div class="col-md-9" style="padding-left: 30%">
+                                <!-- Over the left hand side there is parameters for nbg-->
+                                <!-- Over the right hand side there is properties of produt list component-->
+
+                                <!-- <ngb-pagination [(page)]="thePageNumber"
+                                                [pageSize]="thePageSize"
+                                                [collectionSize]="theTotalElements"
+                                                (pageChange)="listProducts()">
+
+
+                                </ngb-pagination> -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- End footer -->
+        </div>
+    </div>
+</div>
